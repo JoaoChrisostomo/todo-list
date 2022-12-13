@@ -1,0 +1,78 @@
+.inputContent{
+  z-index: 1;
+  top: 30px;
+  position: relative;
+}
+
+.Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputHeader{
+  width: 638px;
+  padding: 16px;
+  border-radius: .5rem;
+  color: #262626;
+  cursor: pointer;
+}
+
+.addButton{
+  padding: 16px;
+  border-radius: 0.5rem;
+  color: #000000;
+  font-weight: 600;
+}
+
+.stateInTheTasks {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.infoQuantityTasks {
+  display: flex;
+  padding: 10px;
+  margin-top: 7rem;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.formTasks{
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+  width: 736px;
+  height: 244px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tasksEmpty{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 30px;
+  flex-direction: column;
+}
+
+.listText {
+  margin: 5px;
+  min-width: 800px;
+  height: 72px;
+  padding: 16px;
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  background: #333333;
+  border-radius: .375rem;
+}
+
+
