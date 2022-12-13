@@ -22,8 +22,11 @@
 .addButton{
   padding: 16px;
   border-radius: 0.5rem;
-  color: #000000;
+  color: #fff;
+  background: #1E6F9F;
   font-weight: 600;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .stateInTheTasks {
@@ -69,10 +72,17 @@
   height: 72px;
   padding: 16px;
   display: flex;
+  justify-content: space-between;
   margin-top: 1rem;
   align-items: center;
   background: #333333;
   border-radius: .375rem;
+}
+
+.listText p{
+  text-align: center;
+  margin: 5px;
+  justify-content: space-between;
 }
 
 

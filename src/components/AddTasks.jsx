@@ -7,13 +7,15 @@ import styles from './addTask.module.css'
 
 import imageEmpty from '../../public/clipboard.svg'
 import iconButton from '../../public/icon-button.svg'
+import iconDelete from '../../public/icon-delete.svg'
 
 
 
 function AddTasks() {
 
   const notify = () => toast("seu input esta vazio, digite alguma task!");
-
+  
+  const [checked, setChecked] = useState(Number)
   const [saveTextInput, setSaveTextInput] = useState('')
   const [saveDisplayTextClickButton, setSaveDisplayTextClickButton] = useState([])
 
@@ -41,12 +43,30 @@ function AddTasks() {
   }, [])
 
   const quantityTasksCreated = saveDisplayTextClickButton.length
+  const handleCheck = () => {
+    if(checked === quantityTasksCreated){
+      setChecked(0)
+    }else{
+      setChecked(checked + 1)
+    }
+  }
 
-  // const handleDelete = (index) => {
-  //   const tasks = saveDisplayTextClickButton.filter((task, i) => i !== index)
-  //   setSaveDisplayTextClickButton(tasks)
-  //   localStorage.setItem('tasks', JSON.stringify(tasks))
-  // }
+  const handleDelete = (index) => {
+    const tasks = saveDisplayTextClickButton.filter((task, i) => i !== index)
+    setSaveDisplayTextClickButton(tasks)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }
+
+  const saveMap = saveDisplayTextClickButton.map((task, index) => {
+    return (
+      <div key={index} className={styles.listText}>
+        <input type="radio" onClick={handleCheck} />
+        <ListTasks task={task} />
+        <ToastContainer autoClose={3000}/>
+        <a onClick={() => handleDelete(index)}><img src={iconDelete} alt="icon delete" /></a>
+      </div>
+    )
+  })
 
   return (
     <>
@@ -56,17 +76,13 @@ function AddTasks() {
       </div>
         <div className={styles.infoQuantityTasks}>
           <p>Tarefas criadas: <span>{quantityTasksCreated}</span></p>
-          <p>Concluidas: <span>0</span></p>
+            <p>Tarefas concluidas: <span>{checked}</span></p>
         </div>
       <div className={styles.stateInTheTasks}>
         <div className={styles.itemsCreated}>
           {saveDisplayTextClickButton.length > 0 ? (
-            saveDisplayTextClickButton.map((task, index) =>
-            <div key={index} className={styles.listText}>
-              <ListTasks task={task} />
-              <ToastContainer autoClose={3000}/>
-            </div>
-            )) :
+            saveMap
+          ) :
             <form className={styles.formTasks} >
               <div className={styles.tasksEmpty}>
                 <img src={imageEmpty} alt="Image form empty"></img>
